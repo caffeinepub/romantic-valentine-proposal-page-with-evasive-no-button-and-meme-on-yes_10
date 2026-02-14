@@ -75,7 +75,7 @@ export default function ValentineProposal() {
         
         <div className="bg-card rounded-3xl p-6 shadow-2xl border-2 border-primary/20">
           <img
-            src="/assets/generated/valentine-meme-good-choice.dim_1024x1024.png"
+            src="/assets/generated/valentine-meme-piku.dim_1024x1024.png"
             alt="Good choice meme"
             className="w-full h-auto rounded-2xl"
           />

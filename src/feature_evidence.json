@@ -2,47 +2,8 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-create-a-single-page-romantic-valentine-proposal-experience-in-the-frontend-that-asks-will-you-be-my-valentine-with-two-options-yes-and-no-using-a-consistent-pink-and-white-theme",
-      "featureTitle": "Create a single-page romantic Valentine proposal experience in the frontend that asks: \"Will you be my Valentine?\" with two options: \"Yes\" and \"No\", using a consistent pink-and-white theme.",
-      "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/components/valentine/ValentineProposal.tsx",
-        "frontend/src/index.css"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-1"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-implement-playful-interaction-where-the-no-button-evades-user-interaction-when-the-user-attempts-to-hover-over-or-touch-the-no-button-it-moves-to-a-new-random-position-within-a-bounded-container-so-it-cannot-be-clicked",
-      "featureTitle": "Implement playful interaction where the \"No\" button evades user interaction: when the user attempts to hover over or touch the \"No\" button, it moves to a new random position within a bounded container so it cannot be clicked.",
-      "files": [
-        "frontend/src/components/valentine/ValentineProposal.tsx",
-        "frontend/src/index.css"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-2"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-when-the-user-clicks-taps-yes-transition-to-an-acceptance-state-that-displays-a-meme-image-and-the-text-good-choice-exact-capitalization",
-      "featureTitle": "When the user clicks/taps \"Yes\", transition to an acceptance state that displays a meme image and the text: \"Good choice\" (exact capitalization).",
+      "featureId": "feature-update-the-acceptance-state-image-the-img-at-xpath-html-1-body-1-div-1-div-1-main-1-div-1-div-2-img-1-so-it-displays-the-newly-uploaded-image-instead-of-the-current-meme-image",
+      "featureTitle": "Update the acceptance-state image (the <img> at XPath /html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/div[2]/img[1]) so it displays the newly uploaded image instead of the current meme image.",
       "files": [
         "frontend/src/components/valentine/ValentineProposal.tsx"
       ],
@@ -54,16 +15,16 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-3"
+        "REQ-5"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-ensure-the-page-is-fully-interactive-with-client-side-logic-only-and-requires-no-backend-canister-functionality-to-operate",
-      "featureTitle": "Ensure the page is fully interactive with client-side logic only and requires no backend canister functionality to operate.",
+      "featureId": "feature-rename-change-the-deployed-app-domain-to-myvalentinepiku-and-provide-the-updated-share-link-for-the-renamed-deployment",
+      "featureTitle": "Rename/change the deployed app/domain to \"myvalentinepiku\" and provide the updated share link for the renamed deployment.",
       "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/components/valentine/ValentineProposal.tsx"
+        "frontend/index.html",
+        "frontend/src/App.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -73,7 +34,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-4"
+        "REQ-6"
       ],
       "confidence": "high"
     }

@@ -1,95 +1,56 @@
 {
   "kind": "build_request",
-  "title": "Romantic Valentine proposal page with evasive No button and meme on Yes",
-  "priority": "normal",
+  "title": "Replace acceptance meme image with uploaded image + rename/share domain to myvalentinepiku",
+  "priority": "high",
   "requirements": [
     {
-      "id": "REQ-1",
-      "text": "Create a single-page romantic Valentine proposal experience in the frontend that asks: \"Will you be my Valentine?\" with two options: \"Yes\" and \"No\", using a consistent pink-and-white theme.",
+      "id": "REQ-5",
+      "text": "Update the acceptance-state image (the <img> at XPath /html[1]/body[1]/div[1]/div[1]/main[1]/div[1]/div[2]/img[1]) so it displays the newly uploaded image instead of the current meme image.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-1"
         ],
         "quotes": [
-          "Create an interactive web page... to ask her to be my valentine... Romantically with a pink and white colour scheme"
+          "Change into this"
         ]
       },
       "acceptanceCriteria": [
-        "The landing view shows a centered romantic card/section with the question text: \"Will you be my Valentine?\"",
-        "The UI uses a coherent pink-and-white color scheme across background, typography, and buttons",
-        "The page is usable on Android Chrome (mobile viewport) without horizontal scrolling"
+        "When the user clicks/taps “Yes” and reaches the acceptance state, the displayed image matches the uploaded image.",
+        "No other images on the page are changed.",
+        "The acceptance image is served as a static asset from frontend/public/assets/generated (no backend fetching)."
       ]
     },
     {
-      "id": "REQ-2",
-      "text": "Implement playful interaction where the \"No\" button evades user interaction: when the user attempts to hover over or touch the \"No\" button, it moves to a new random position within a bounded container so it cannot be clicked.",
-      "target": "frontend",
+      "id": "REQ-6",
+      "text": "Rename/change the deployed app/domain to \"myvalentinepiku\" and provide the updated share link for the renamed deployment.",
+      "target": "unknown",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-1"
         ],
         "quotes": [
-          "when she hovers her cursor over no,it should move away so she cannot click it,forcing her to click only on yes"
+          "Rename this to myvalentinepiku",
+          "Give link"
         ]
       },
       "acceptanceCriteria": [
-        "On desktop: moving the cursor onto the \"No\" button triggers it to relocate within the visible bounds of its container",
-        "On mobile: tapping/pressing near/on the \"No\" button triggers it to relocate within the visible bounds of its container",
-        "The \"No\" button never moves off-screen or under other UI in a way that makes the page layout break",
-        "It is not possible to click/tap the \"No\" button under normal use because it moves away before activation"
-      ]
-    },
-    {
-      "id": "REQ-3",
-      "text": "When the user clicks/taps \"Yes\", transition to an acceptance state that displays a meme image and the text: \"Good choice\" (exact capitalization).",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ],
-        "quotes": [
-          "when she click yes,show her a meme image telling her\"good choice"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Clicking/tapping \"Yes\" replaces (or clearly transitions from) the initial question view to a success view",
-        "The success view includes the text \"Good choice\" exactly",
-        "The success view displays the provided/generated meme image reliably as a static asset in the frontend (not fetched from the backend)"
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "text": "Ensure the page is fully interactive with client-side logic only and requires no backend canister functionality to operate.",
-      "target": "both",
-      "source": {
-        "messageIds": [
-          "msg-2"
-        ],
-        "quotes": [
-          "be fully interactive using HTML,CSS,and JAVAScript so that i can easily run in on my Android phone using chrome."
-        ]
-      },
-      "acceptanceCriteria": [
-        "All interactions (No evasion, Yes success state) work without calling backend methods",
-        "The backend canister does not need new APIs for this feature",
-        "The frontend runs as a static interactive page within the app (React app in the browser)"
+        "Deployment/share URL reflects the name \"myvalentinepiku\" (as the app/domain label).",
+        "A single updated share link is produced for the renamed deployment."
       ]
     }
   ],
   "constraints": [
-    "Do not modify any files under frontend/src/components/ui (read-only UI components); compose them instead if needed.",
-    "Do not edit immutable hook files: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, or frontend/src/main.tsx."
+    "Do not modify any files under frontend/src/components/ui or the immutable hook/entry paths listed in SYSTEM_CONTEXT.",
+    "Keep the app fully client-side; do not add backend canister dependencies for the Valentine interaction."
   ],
   "nonGoals": [
-    "User accounts or authentication flows (Internet Identity)",
-    "Storing proposal responses or analytics on-chain",
-    "Real-time features, messaging, email, or notifications",
-    "Multiple pages/routes beyond the single interactive proposal screen"
+    "Changing the Yes/No interaction logic or copy beyond updating the selected image element.",
+    "Adding new authentication, databases, or external services."
   ],
   "imageRequirements": {
     "required": [
-      "Romantic meme-style image with the caption \"Good choice\" integrated in the image (valentine-meme-good-choice.dim_1024x1024.png)"
+      "Grayscale anime-style portrait with messy dark hair, star-shaped hair clip near the right side, soft glow, halftone/dotted texture, dark vignette background (valentine-meme-piku.dim_1024x1024.png)"
     ],
     "edits": []
   }
