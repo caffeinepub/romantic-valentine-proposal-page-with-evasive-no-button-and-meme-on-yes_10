@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 1.5rem;
+        /* Romantic pink and white theme - Light mode */
+        --background: 0.98 0.02 350;
+        --foreground: 0.25 0.05 350;
+        --card: 1 0.015 350;
+        --card-foreground: 0.25 0.05 350;
+        --popover: 1 0.015 350;
+        --popover-foreground: 0.25 0.05 350;
+        --primary: 0.65 0.22 350;
+        --primary-foreground: 1 0 0;
+        --secondary: 0.95 0.03 350;
+        --secondary-foreground: 0.35 0.08 350;
+        --muted: 0.96 0.02 350;
+        --muted-foreground: 0.55 0.04 350;
+        --accent: 0.88 0.15 340;
+        --accent-foreground: 0.25 0.05 350;
+        --destructive: 0.577 0.245 27.325;
+        --destructive-foreground: 0.985 0 0;
+        --border: 0.92 0.03 350;
+        --input: 0.92 0.03 350;
+        --ring: 0.65 0.22 350;
+        --chart-1: 0.65 0.22 350;
+        --chart-2: 0.75 0.18 340;
+        --chart-3: 0.85 0.12 330;
+        --chart-4: 0.70 0.20 355;
+        --chart-5: 0.80 0.15 345;
+    }
+
+    .dark {
+        --background: 0.15 0.03 350;
+        --foreground: 0.98 0.02 350;
+        --card: 0.20 0.04 350;
+        --card-foreground: 0.98 0.02 350;
+        --popover: 0.18 0.04 350;
+        --popover-foreground: 0.98 0.02 350;
+        --primary: 0.75 0.20 350;
+        --primary-foreground: 0.15 0.03 350;
+        --secondary: 0.25 0.05 350;
+        --secondary-foreground: 0.98 0.02 350;
+        --muted: 0.25 0.05 350;
+        --muted-foreground: 0.65 0.05 350;
+        --accent: 0.35 0.10 340;
+        --accent-foreground: 0.98 0.02 350;
+        --destructive: 0.704 0.191 22.216;
+        --destructive-foreground: 0.98 0.02 350;
+        --border: 0.30 0.05 350;
+        --input: 0.30 0.05 350;
+        --ring: 0.75 0.20 350;
+        --chart-1: 0.75 0.20 350;
+        --chart-2: 0.70 0.18 340;
+        --chart-3: 0.65 0.15 330;
+        --chart-4: 0.80 0.22 355;
+        --chart-5: 0.85 0.18 345;
+    }
+
+    * {
+        @apply border-border;
+    }
+    
+    body {
+        @apply bg-background text-foreground;
+        overflow-x: hidden;
+    }
+    
+    html {
+        overflow-x: hidden;
+    }
+}
+
+/* Custom romantic animations */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes pulse-heart {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-heart {
+    animation: pulse-heart 1.5s ease-in-out infinite;
+}
+
+/* Gradient text effect */
+.gradient-text {
+    background: linear-gradient(135deg, oklch(0.65 0.22 350), oklch(0.75 0.18 340));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}

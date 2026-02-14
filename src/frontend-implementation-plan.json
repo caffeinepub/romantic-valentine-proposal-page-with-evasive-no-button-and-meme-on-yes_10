@@ -1,0 +1,97 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Valentine proposal single-page experience (evasive No + meme on Yes)",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Build a single-page Valentine proposal UI with a centered romantic card and consistent pink-and-white theme.",
+      "acceptanceCriteria": [
+        "The landing view shows a centered romantic card/section with the question text: \"Will you be my Valentine?\"",
+        "The UI uses a coherent pink-and-white color scheme across background, typography, and buttons",
+        "The page is usable on Android Chrome (mobile viewport) without horizontal scrolling"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "create",
+          "description": "Create the app’s single-screen composition that renders the Valentine proposal experience as the only interactive screen (no additional routes/pages beyond this screen)."
+        },
+        {
+          "path": "frontend/src/components/valentine/ValentineProposal.tsx",
+          "operation": "create",
+          "description": "Implement the centered romantic card layout with the question text and Yes/No actions. Use shadcn-ui components (e.g., Card, Button) to compose the UI without modifying any files under frontend/src/components/ui; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "create",
+          "description": "Add global styling and Tailwind layer customizations to enforce a pink-and-white theme (background, foreground, primary/accent button colors) and prevent horizontal scrolling on mobile viewports."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Make the No button evade interaction by relocating to random positions within a bounded container on hover/touch.",
+      "acceptanceCriteria": [
+        "On desktop: moving the cursor onto the \"No\" button triggers it to relocate within the visible bounds of its container",
+        "On mobile: tapping/pressing near/on the \"No\" button triggers it to relocate within the visible bounds of its container",
+        "The \"No\" button never moves off-screen or under other UI in a way that makes the page layout break",
+        "It is not possible to click/tap the \"No\" button under normal use because it moves away before activation"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/valentine/ValentineProposal.tsx",
+          "operation": "modify",
+          "description": "Add client-side logic to measure the container and button dimensions, then reposition the No button to a new random in-bounds coordinate on pointer/mouse enter and touch/pointer interactions; ensure the container uses relative positioning and overflow handling so the layout remains stable."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Ensure global styles support the evasion container (e.g., preventing page-level horizontal scroll, ensuring the interactive area can safely contain absolute-positioned elements without breaking layout)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "On Yes, transition to a success state showing the static meme image and the exact text \"Good choice\".",
+      "acceptanceCriteria": [
+        "Clicking/tapping \"Yes\" replaces (or clearly transitions from) the initial question view to a success view",
+        "The success view includes the text \"Good choice\" exactly",
+        "The success view displays the provided/generated meme image reliably as a static asset in the frontend (not fetched from the backend)"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/valentine-meme-good-choice.dim_1024x1024.png",
+          "operation": "create",
+          "description": "Add the generated meme image asset to the frontend’s static public assets so it can be displayed reliably without any backend calls."
+        },
+        {
+          "path": "frontend/src/components/valentine/ValentineProposal.tsx",
+          "operation": "modify",
+          "description": "Add acceptance-state UI and state transition on Yes click/tap to show the text \"Good choice\" and render the static image from frontend/public/assets/generated/valentine-meme-good-choice.dim_1024x1024.png within the success view."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Keep the experience fully client-side with no backend dependencies or backend method calls.",
+      "acceptanceCriteria": [
+        "All interactions (No evasion, Yes success state) work without calling backend methods",
+        "The backend canister does not need new APIs for this feature",
+        "The frontend runs as a static interactive page within the app (React app in the browser)"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/valentine/ValentineProposal.tsx",
+          "operation": "modify",
+          "description": "Ensure all interactivity is implemented with React client-side state and DOM measurement only; do not import or call any backend actor/client capabilities for this feature."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire the Valentine proposal component as the sole rendered screen so the app functions as a single interactive page without additional routes and without requiring any backend functionality."
+        }
+      ]
+    }
+  ]
+}

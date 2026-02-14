@@ -1,0 +1,96 @@
+{
+  "kind": "build_request",
+  "title": "Romantic Valentine proposal page with evasive No button and meme on Yes",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a single-page romantic Valentine proposal experience in the frontend that asks: \"Will you be my Valentine?\" with two options: \"Yes\" and \"No\", using a consistent pink-and-white theme.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Create an interactive web page... to ask her to be my valentine... Romantically with a pink and white colour scheme"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The landing view shows a centered romantic card/section with the question text: \"Will you be my Valentine?\"",
+        "The UI uses a coherent pink-and-white color scheme across background, typography, and buttons",
+        "The page is usable on Android Chrome (mobile viewport) without horizontal scrolling"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement playful interaction where the \"No\" button evades user interaction: when the user attempts to hover over or touch the \"No\" button, it moves to a new random position within a bounded container so it cannot be clicked.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "when she hovers her cursor over no,it should move away so she cannot click it,forcing her to click only on yes"
+        ]
+      },
+      "acceptanceCriteria": [
+        "On desktop: moving the cursor onto the \"No\" button triggers it to relocate within the visible bounds of its container",
+        "On mobile: tapping/pressing near/on the \"No\" button triggers it to relocate within the visible bounds of its container",
+        "The \"No\" button never moves off-screen or under other UI in a way that makes the page layout break",
+        "It is not possible to click/tap the \"No\" button under normal use because it moves away before activation"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "When the user clicks/taps \"Yes\", transition to an acceptance state that displays a meme image and the text: \"Good choice\" (exact capitalization).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "when she click yes,show her a meme image telling her\"good choice"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Clicking/tapping \"Yes\" replaces (or clearly transitions from) the initial question view to a success view",
+        "The success view includes the text \"Good choice\" exactly",
+        "The success view displays the provided/generated meme image reliably as a static asset in the frontend (not fetched from the backend)"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Ensure the page is fully interactive with client-side logic only and requires no backend canister functionality to operate.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "be fully interactive using HTML,CSS,and JAVAScript so that i can easily run in on my Android phone using chrome."
+        ]
+      },
+      "acceptanceCriteria": [
+        "All interactions (No evasion, Yes success state) work without calling backend methods",
+        "The backend canister does not need new APIs for this feature",
+        "The frontend runs as a static interactive page within the app (React app in the browser)"
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify any files under frontend/src/components/ui (read-only UI components); compose them instead if needed.",
+    "Do not edit immutable hook files: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, or frontend/src/main.tsx."
+  ],
+  "nonGoals": [
+    "User accounts or authentication flows (Internet Identity)",
+    "Storing proposal responses or analytics on-chain",
+    "Real-time features, messaging, email, or notifications",
+    "Multiple pages/routes beyond the single interactive proposal screen"
+  ],
+  "imageRequirements": {
+    "required": [
+      "Romantic meme-style image with the caption \"Good choice\" integrated in the image (valentine-meme-good-choice.dim_1024x1024.png)"
+    ],
+    "edits": []
+  }
+}
